@@ -101,7 +101,7 @@ export class Toolshop {
 
   async clickItem(item: string) {
     const itemName = this.page.locator(".card-title");
-    const itemMatch = itemName.filter({ hasText: item }).first();
+    const itemMatch = itemName.filter({ hasText: ` ${item} ` }).first();
     await itemMatch.click();
   }
 
@@ -164,6 +164,10 @@ export class Toolshop {
 
   async clickNavigationBtn(locator: string) {
     await this.page.getByRole('button', { name: locator })
+  }
+
+  getCart() {
+    return this.cart
   }
 
 }
