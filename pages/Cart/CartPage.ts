@@ -9,7 +9,7 @@ export class CartPage {
   private readonly home: Locator;
   private readonly banner: Locator;
   private readonly emptyHeader: Locator;
-  private readonly deletedBanner: Locator
+  private readonly deletedBanner: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -22,8 +22,12 @@ export class CartPage {
     this.banner = this.page
       .locator("div")
       .filter({ hasText: "Product added to shopping" });
-    this.emptyHeader = this.page.getByText("The cart is empty. Nothing to display.");
-    this.deletedBanner = this.page.locator('div', { hasText: ' Product deleted. ' })
+    this.emptyHeader = this.page.getByText(
+      "The cart is empty. Nothing to display.",
+    );
+    this.deletedBanner = this.page.locator("div", {
+      hasText: " Product deleted. ",
+    });
   }
 
   async removeItem(productName: string) {
@@ -62,6 +66,10 @@ export class CartPage {
     return this.proceedToCheckoutBtn;
   }
 
+  async clickProceedToCheckout() {
+    await this.proceedToCheckoutBtn.click()
+  }
+
   async goToHome() {
     await this.home.click();
   }
@@ -74,4 +82,17 @@ export class CartPage {
   async getQuantity() {
     return await this.quantity.all();
   }
+
+  getCartItem(item: string) {
+    return this.page.locator('[data-test="product-title"]', { hasText: item });
+  }
+
+  async getItemPrices() {
+    return await this.page.locator('[data-test="product-price"]').allTextContents()
+  }
+
+  async reload() {
+    await this.page.reload({ waitUntil: 'load' })
+  }
+
 }
