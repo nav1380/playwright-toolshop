@@ -7,6 +7,7 @@ export class CheckoutPage {
     private readonly continueAsGuest: Locator
     private readonly guestParagraph: Locator
     private readonly loggedInParagraph: Locator
+    private readonly proceedToCheckout: Locator
 
     constructor(page: Page) {
         this.page = page;
@@ -14,6 +15,11 @@ export class CheckoutPage {
         this.continueAsGuest = this.page.getByRole('tab', { name: 'Continue as Guest' })
         this.guestParagraph = this.page.getByText("Checkout without creating an account")
         this.loggedInParagraph = this.page.locator('p.ng-star-inserted')
+        this.proceedToCheckout = this.page.getByRole('button', { name: ' Proceed to checkout ' })
+    }
+
+    async clickProceedToCheckout() {
+        await this.proceedToCheckout.click()
     }
 
     getLoginHeader() {
