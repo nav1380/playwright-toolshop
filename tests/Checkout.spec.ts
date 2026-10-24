@@ -17,45 +17,45 @@ test.describe("Checkout", () => {
     await expect(checkoutPage.getGuestParagraph()).toBeVisible();
   });
 
-  // test("Checkout while logged in", async ({
-  //   loggedInUser,
-  //   productPage,
-  //   dashboardPage,
-  //   cartPage,
-  //   checkoutPage,
-  // }) => {
-  //   await expect(dashboardPage.getAccountHeader()).toBeVisible();
-  //   await dashboardPage.goToHome();
+  test("Checkout while logged in", async ({
+    loggedInUser,
+    productPage,
+    dashboardPage,
+    cartPage,
+    checkoutPage,
+  }) => {
+    await expect(dashboardPage.getAccountHeader()).toBeVisible();
+    await dashboardPage.goToHome();
 
-  //   await loggedInUser.clickItem("Bolt Cutters");
-  //   await productPage.clickAddToCart();
-  //   await productPage.goToCart();
+    await loggedInUser.clickItem("Bolt Cutters");
+    await productPage.clickAddToCart();
+    await productPage.goToCart();
 
-  //   await cartPage.clickProceedToCheckout();
+    await cartPage.clickProceedToCheckout();
 
-  //   await expect(checkoutPage.getLoggedInParagraph()).toBeVisible();
-  // });
+    await expect(checkoutPage.getLoggedInParagraph()).toBeVisible();
+  });
 
-  // test("Attempt checkout with an empty cart", async ({ toolShop }) => {
-  //   await expect(toolShop.getCart()).toBeHidden();
-  // });
+  test("Attempt checkout with an empty cart", async ({ toolShop }) => {
+    await expect(toolShop.getCart()).toBeHidden();
+  });
 
-  // test("Fill billing/shipping address with valid data", async ({
-  //   loggedInUser,
-  //   productPage,
-  //   dashboardPage,
-  //   cartPage,
-  //   checkoutPage,
-  // }) => {
-  //   await expect(dashboardPage.getAccountHeader()).toBeVisible();
-  //   await dashboardPage.goToHome();
+  test("Fill billing/shipping address with valid data", async ({
+    loggedInUser,
+    productPage,
+    dashboardPage,
+    cartPage,
+    checkoutPage,
+  }) => {
+    await expect(dashboardPage.getAccountHeader()).toBeVisible();
+    await dashboardPage.goToHome();
 
-  //   await loggedInUser.clickItem("Bolt Cutters");
-  //   await productPage.clickAddToCart();
-  //   await productPage.goToCart();
+    await loggedInUser.clickItem("Bolt Cutters");
+    await productPage.clickAddToCart();
+    await productPage.goToCart();
 
-  //   await cartPage.clickProceedToCheckout();
-  //   await checkoutPage.clickProceedToCheckout();
-  //   await checkoutPage.clickProceedToCheckout();
-  // });
+    await cartPage.clickProceedToCheckout();
+    await checkoutPage.clickProceedToCheckout();
+    await checkoutPage.clickProceedToCheckout();
+  });
 });

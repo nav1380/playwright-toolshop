@@ -28,7 +28,7 @@ export const registerUser: RegisterUser = {
   state: "North Holland",
   phone: "0612345678",
   email: faker.internet.email(),
-  password: `.${faker.internet.password()}`,
+  password: `1,${faker.internet.password()}`,
   existingEmail: 'bbbx@gmail.com'
 };
 

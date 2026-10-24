@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { registerUser, RegisterUser } from "../../testdata/registerUser";
+import { RegisterUser } from "../../testdata/registerUser";
 
 export class RegistrationPage {
   private readonly page: Page;

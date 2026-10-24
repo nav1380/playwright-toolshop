@@ -15,6 +15,7 @@ type Fixtures = {
   loginPage: LoginPage;
   dashboardPage: DashboardPage;
   registrationPage: RegistrationPage;
+  registeredUser: RegistrationPage;
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
 };
@@ -47,6 +48,20 @@ export const test = base.extend<Fixtures>({
     await loginPage.clickLogin();
 
     await use(loggedInUser);
+  },
+  registeredUser: async ({ page, toolShop, loginPage }, use) => {
+    const loggedInUser = new Toolshop(page);
+
+    await toolShop.goToSignIn();
+    await loginPage.goToRegistration();
+
+    const registrationPage = new RegistrationPage(page);
+    await registrationPage.enterDetails(registerUser);
+    await registrationPage.clickRegister();
+
+    await loginPage.goToRegistration();
+    await registrationPage.enterDetails(registerUser);
+    await registrationPage.clickRegister();
   },
   productPage: async ({ page }, use) => {
     const productPage = new ProductPage(page);
